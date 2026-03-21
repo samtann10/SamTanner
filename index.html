@@ -9,34 +9,16 @@
   gtag('js', new Date());
 
   gtag('config', 'G-22ELZMKVN7');
-  
-  // Time on Page Tracking
-  let startTime = Date.now();
-  window.addEventListener('beforeunload', () => {
-    let duration = Math.round((Date.now() - startTime) / 1000); // seconds
-    gtag('event', 'time_on_page', {
-      page_path: window.location.pathname,
-      duration_seconds: duration
+ 
+  // --- Heartbeat to track time on page ---
+  // Sends a "heartbeat" event every 10 seconds
+  setInterval(() => {
+    gtag('event', 'heartbeat', {
+      'event_category': 'engagement',
+      'event_label': 'heartbeat',
+      'send_to': 'G-22ELZMKVN7'
     });
-  });
-
-  // Scroll Depth Tracking (25%, 50%, 75%, 100%)
-  let scrollTracked = {};
-  window.addEventListener('scroll', () => {
-    let scrollTop = window.scrollY;
-    let docHeight = document.body.scrollHeight - window.innerHeight;
-    let scrollPercent = Math.round((scrollTop / docHeight) * 100);
-    [25, 50, 75, 100].forEach(p => {
-      if (scrollPercent >= p && !scrollTracked[p]) {
-        gtag('event', 'scroll_depth', {
-          event_category: 'Scroll',
-          event_label: window.location.pathname,
-          scroll_percent: p
-        });
-        scrollTracked[p] = true;
-      }
-    });
-  });
+  }, 10000); // 10000ms = 10 seconds
 
 </script>
 <meta charset="UTF-8">
