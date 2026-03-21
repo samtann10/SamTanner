@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sam Tanner Portfolio</title>
+<style>
+  body {
+    margin: 0;
+    font-family: monospace;
+    overflow-x: hidden;
+    background: black;
+    color: #55e42a;
+    position: relative;
+  }
+
+  header {
+    padding: 20px;
+    font-size: 24px;
+    color: hsl(100, 100%, 50%);
+    position: relative;
+    z-index: 2;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tab {
+    padding: 10px 15px;
+    border: 1px solid #475569;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .tab.active {
+    background: #67e8f9;
+    color: black;
+  }
+
+  .content {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card {
+    border: 1px solid #373c42;
+    padding: 20px;
+    background: rgba(21, 22, 27, 0.9);
+    white-space: pre-wrap;
+    position: relative;
+    z-index: 2;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .label {
+    color: #55e42a;
+    display: inline;
+  }
+
+  .value {
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<header>Sam_Tanner_Portfolio.db</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('about')">About</div>
+    <div class="tab" onclick="showTab('workexperience')">Work Experience</div>
+  <div class="tab" onclick="showTab('projects')">Projects</div>
+  <div class="tab" onclick="showTab('skills')">Skills</div>
+  <div class="tab" onclick="showTab('resume')">Resume</div>
+  <div class="tab" onclick="showTab('relevant')">Relevant Coursework</div>
+</div>
+
+<div class="content">
+  <div id="about" class="card">
+CREATE PROCEDURE GetAboutMe
+    @Name VARCHAR(35)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        Name, 
+        [Bachelor Degree], 
+        Minor, 
+        University,
+        [Graduation Date],
+        DATEDIFF(YEAR, [Graduation Date], GETDATE()) AS [Years Since Graduation],
+        GPA, 
+        CASE 
+            WHEN GPA >= 3.8 AND GPA <= 3.949 THEN 'Magna Cum Laude'
+            WHEN GPA >= 3.5 AND GPA <= 3.799 THEN 'Cum Laude'
+            WHEN GPA >= 2.0 AND GPA < 3.5 THEN 'Good Standing'
+            ELSE 'Below Standard'
+        END AS GPA_Status,
+        Greetings,
+        LinkedIn,
+        Email,
+        GitHub,
+        [Salesforce Trailhead]
+    FROM About
+    WHERE Name = @Name;
+END;
+GO
+EXEC GetAboutMe @Name = 'Sam Tanner';
+
+<button onclick="runQuery('about')">Run Query</button>
+
+<div id="results-about" style="display:none">
+<H3 class="label">Name:</H3> <span class="value">Sam Tanner</span>
+<H3 class="label">Bachelor Degree:</H3> <span class="value">Information Systems (Data Engineering)</span>
+<H3 class="label">Minor:</H3> <span class="value">Data Analytics</span>
+<H3 class="label">University:</H3> <span class="value">Utah State University Jon M. Huntsman School of Business</span>
+<H3 class="label">Graduation Date:</H3> <span class="value">April 2026</span>
+<H3 class="label">Years Since Graduation:</H3> <span class="value">0</span>
+<H3 class="label">GPA:</H3> <span class="value">3.73</span>
+<H3 class="label">GPA_Status:</H3> <span class="value">Cum Laude</span>
+<H3 class="label">Greetings:</H3>
+<span class="value">I am passionate about extracting, managing, and wrangling data to uncover insights and connect meaningful patterns. Throughout my studies, I have built a strong foundation in SQL, database management, Python programming, data analytics, data engineering, warehousing, visualization, and cloud computing principles in AWS. I also possess a broad understanding of various business functions, allowing me to translate complex data into actionable business insights.
+I thrive in environments that foster curiosity, collaboration, and problem-solving, and I am eager to apply this mindset to address emerging, business-critical questions.</span>
+<H3 class="label">LinkedIn:</H3> <span class="value"><a href="https://www.linkedin.com/in/tannersam/" target="_blank">tannersam</a></span>
+<H3 class="label">Email:</H3> <span class="value"><a href="mailto:samtann10@gmail.com">samtann10@gmail.com</a></span>
+<H3 class="label">GitHub:</H3> <span class="value"><a href="https://github.com/samtann10" target="_blank">samtann10</a></span>
+<H3 class="label">Salesforce Trailhead:</H3> <span class="value"><a href="https://salesforce.com/trailblazer/samtanner " target="_blank">samtann10</a></span>
+</div>
+  </div>
+
+
+    <div id="workexperience" class="card" style="display:none">
+SELECT Company, Location, Position, Duration, Responsibilities
+FROM [Work Experience]
+WHERE Name = 'Sam Tanner';
+
+<button onclick="runQuery('workexperience')">Run Query</button>
+
+<div id="results-workexperience" style="display:none">
+<H3 class="label">Company:</H3> <span class="value">Analytics Solutions Center – Utah State University (Client: Lee's Marketplace)</span>
+<H3 class="label">Location:</H3> <span class="value">Logan, UT</span>
+<H3 class="label">Position:</H3> <span class="value">Data Engineer</span>
+<H3 class="label">Duration:</H3> <span class="value">Jan 2026 – Present</span>
+<H3 class="label">Responsibilities:</H3> <span class="value">● Mapped data flows across 7 business systems, identifying integration gaps and automation opportunities
+● Worked in a small team to redesign proposal for a Power Automate, Azure SQL, Power BI architecture and helped present findings to senior stakeholders and company management
+● Contributing to ETL pipeline development, dashboard builds, and system documentation for live client-facing data modernization engagement</span>
+
+<H3 class="label">Company:</H3> <span class="value">ScyTek Laboratories</span>
+<H3 class="label">Location:</H3> <span class="value">Logan, UT</span>
+<H3 class="label">Position:</H3> <span class="value">Shipping Quality Control</span>
+<H3 class="label">Duration:</H3> <span class="value">Aug 2022 – Present</span>
+<H3 class="label">Responsibilities:</H3> <span class="value">● Ensured secure handling and accurate processing of 25 shipments daily, maintaining 100% compliance with documentation protocols to maximize product shipment
+● Collaborated with cross-functional teams of 20 employees, including production and customer service, to identify and resolve data inaccuracies, reducing labeling errors
+● Utilized communication and tracking technologies to streamline workflows and maintain consistent communication for shipment verification and updates</span>
+
+<H3 class="label">Company:</H3> <span class="value">Quick Quack Car Wash</span>
+<H3 class="label">Location:</H3> <span class="value">Providence, UT</span>
+<H3 class="label">Position:</H3> <span class="value">Team Member</span>
+<H3 class="label">Duration:</H3> <span class="value">Apr 2021 – Aug 2022</span>
+<H3 class="label">Responsibilities:</H3> <span class="value">● Resolved customer inquiries for 500 customers daily, documenting incident reports to ensure operational transparency and enhance service quality
+● Exceeded sales targets by 200%, leveraging interpersonal communication to increase membership adoption while upholding security of financial transactions
+● Supervised 3-4 employees as shift lead, fostering a collaborative environment and driving efficient problem-solving to meet daily operational objectives</span>
+</div>
+  </div>
+
+
+    <div id="projects" class="card" style="display:none">
+SELECT Project, Year, Description 
+FROM Projects
+WHERE Name = 'Sam Tanner';
+
+<button onclick="runQuery('projects')">Run Query</button>
+
+<div id="results-projects" style="display:none">
+<H3 class="label">Project:</H3> <span class="value">Cryptocurrency Arbitrage Trader</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">• Developed a Python-based crypto arbitrage detection program using NetworkX graphs and live API data to identify optimal multi-currency exchange paths and detect dis-equilibrium cycles.
+• Automated data collection and storage of daily exchange-rate snapshots for 13 cryptocurrencies in CSV format, organizing datasets for analysis.
+• Implemented trading logic by linking arbitrage signals to a trading API (e.g., Alpaca) to execute real-time paper trades on profitable currency-exchange cycles.</span>
+
+<H3 class="label">Project:</H3> <span class="value">Global Religious Landscape Dashboard</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">• Cleansed, merged, and transformed datasets using Pandas and Power Query to prepare accurate and analyzable data.
+• Designed and developed an interactive Tableau dashboard and Story applying layout, color, typography, and Gestalt principles to visualize spatial, trend, and magnitude insights.
+• Created an executive summary and delivered a 4-minute presentation synthesizing data insights, credibility, and policy implications for a UN-style audience.</span>
+<a href="files/Global_Religious_Trends_Powerpoint_Portfolio.pptx" target="_blank">Download PowerPoint</a>
+
+<H3 class="label">Project:</H3> <span class="value">Sportsbook Data Engineering Project - Group Project, 2 members</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">• Designed and implemented a fully relational PostgreSQL data mart integrating multi-source sportsbook data (SQL Server + CSV), including schema design, ETL pipelines, ERD creation, and a comprehensive data dictionary.
+• Engineered advanced data transformations for betting logic, including commission calculations, outcome determination, spread/over-under tagging, and game-level enrichment for analytics.
+• Validated the data mart through complex SQL analytics and statistical modeling, building multi-query performance tests and linear regression models to predict customer value using engineered features and correlation analysis.</span>
+
+<H3 class="label">Project:</H3> <span class="value">Dimensional Modeling & Data Warehouse Implementation</span>
+<H3 class="label">Year:</H3> <span class="value">2026</span>
+<H3 class="label">Description:</H3> <span class="value">• Implemented a conformed dimensional (star schema) model in Snowflake, translating point-of-sale transactional data across 10 retail locations into an analytics-ready data warehouse.
+• Designed and refined the dimensional model in Lucidchart, then populated fact and dimension tables using sample data from AWS S3, incorporating feedback to ensure proper grain definition, surrogate keys, and dimensional integrity.
+• Built an end-to-end ELT pipeline by integrating Amazon RDS PostgreSQL data via Fivetran and transforming it with dbt to load and maintain the final dimensional model in Snowflake for scalable business analysis.</span>
+
+<H3 class="label">Project:</H3> <span class="value">Stock Trading Strategy Simulator</span>
+<H3 class="label">Year:</H3> <span class="value">2024</span>
+<H3 class="label">Description:</H3> <span class="value">• Developed dynamic Python-based stock evaluator for 10 stocks based on time-series data retrieved via API
+• Implemented 3 trading strategies - mean reversion, Bollinger Bands, and simple moving average - to generate daily buy/sell targets
+• Utilized functions and dictionaries, exporting results in JSON format for further analysis to identify buying/selling points and storing results in CSV files for easy readability</span>
+<a href="https://github.com/samtann10/Stock-Trader" target="_blank">View on GitHub</a>
+
+<H3 class="label">Project:</H3> <span class="value">Supply Chain Management Tool</span>
+<H3 class="label">Year:</H3> <span class="value">2026</span>
+<H3 class="label">Description:</H3> <span class="value">• Built a production-grade supply chain analytics data app on Databricks Apps, Streamlit, and Unity Catalog, delivering live dashboards, governed data access, and natural language querying with enterprise data controls.
+• Developed as part of the Utah State University HackUSU competition, leveraging governance frameworks and scalable architecture from Databricks and presented the project to judges during competition review.
+• Collaborated as a small team using Kiro and Cursor AI for rapid spec-driven development, delivering a production-ready solution that was formally presented, evaluated, and judged in a competitive hackathon environment.
+• Coordinating implementation readiness including Azure SQL database configuration, Power Automate environment setup, and Business Dynamics permission planning</span>
+
+<H3 class="label">Project:</H3> <span class="value">Food Consumer Price Index Analysis</span>
+<H3 class="label">Year:</H3> <span class="value">2026</span>
+<H3 class="label">Description:</H3> <span class="value">Collaborated in a team of 2 members to use Python, Pandas, and Power Query to clean, transform, and integrate raw Food Consumer Price Index (CPI) data from the Bureau of Labor Statistics (BLS) and USDA. Built a Tableau Story analyzing food price trends from 1974–2024, with forecasts through 2033, to inform general consumers about evolving food purchasing patterns. The project was presented to USU Huntsman School of Business faculty as part of the 2026 Hack-A-New-Year competition.</span>
+<a href="files/CPI Story Powerpoint Portfolio.pptx" target="_blank">Download PowerPoint</a>
+
+<H3 class="label">Project:</H3> <span class="value">BlackJack Game Simulation</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">Designed and implemented a Python-based Blackjack game simulation, incorporating object-oriented programming principles to create classes for cards, decks, players, and game logic. The simulation included features such as shuffling, dealing, player actions (hit, stand, double down), and dealer behavior. The program was tested with various scenarios to ensure accurate game mechanics and outcomes.</span>
+
+<H3 class="label">Project:</H3> <span class="value">Cybersecurity Reference Tool</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">• Developed an interactive cybersecurity education web app using Python and Flask, featuring multiple modules that teach core concepts such as SQL Injection, XSS, phishing, networking, and password security.
+• Implemented hands-on security simulations (e.g., SQL injection login bypass, XSS input testing, and a client-side keylogger demo) to help users understand real-world vulnerabilities in a safe, controlled environment.
+• Integrated authentication and secure practices, including HTTP Basic Authentication with hashed credentials, while also intentionally demonstrating insecure patterns for educational comparison.
+• Designed engaging user experience with quizzes and dynamic content, reinforcing learning through interactive assessments and real-time feedback across all cybersecurity topics.</span>
+
+<H3 class="label">Project:</H3> <span class="value">Group Project Data Analysis of the Nashville AirBnB Market</span>
+<H3 class="label">Year:</H3> <span class="value">2024</span>
+<H3 class="label">Description:</H3> <span class="value">In a 2 member group project, we were tasked with cleansing and analyzing a 2000-row dataset of Airbnb listings in the Nashville, Tennessee area. Our main objectives were to uncover and assess the investment potential of the area and to present our findings, delivering a data-driven investment recommendation.</span>
+
+<H3 class="label">Project:</H3> <span class="value">SQL Data Wrangling</span>
+<H3 class="label">Year:</H3> <span class="value">2024</span>
+<H3 class="label">Description:</H3> <span class="value">This project focused on comprehensive data cleansing using SQL to prepare two datasets for analysis. It involved (1) Loading and inspecting data, (2) Deleting columns, (3) Handling duplicates, (4) Data type conversion, (5) Handling missing, inconsistent, and Null values, and (6) Dealing with outliers.</span>
+
+<H3 class="label">Project:</H3> <span class="value">Mobile App Prototype UI Design</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">Designed and developed an interactive mobile app prototype on Figma for a potential kitchen aid and supply tracker tech startup during a hackathon.</span>
+
+</div>
+
+  </div>
+
+  <div id="skills" class="card" style="display:none">
+SELECT * 
+FROM Skills
+WHERE Name = 'Sam Tanner';
+
+<button onclick="runQuery('skills')">Run Query</button>
+
+<div id="results-skills" style="display:none">
+<H3 class="label">Data Engineering Core:</H3> <span class="value">Python (Pandas, NumPy, APIs), SQL (SQL Server, MySQL, PostgreSQL), Excel, Power Query (advanced formulas), OOP, Data Structures & Algorithms, Dimensional Modeling, Data Warehousing (Kimball Methodology, BUS Architecture)</span>
+
+<H3 class="label">Cloud & Tools:</H3> <span class="value">AWS, Linux (foundational), GitHub, Jupyter Notebooks, Snowflake, dbt, Docker, kiro, Cursor, Databricks, Power Automate, Azure SQL Database</span>
+
+<H3 class="label">Database & Visualization:</H3> <span class="value">ERD design (Lucidchart, Figma), Tableau Desktop (certified), Power BI</span>
+
+<H3 class="label">Data Pipelines:</H3> <span class="value">Web JSON/API, ETL workflows (Medallion Architecture), structured and unstructured data processing</span>
+
+</div>
+
+  </div>
+
+  <div id="resume" class="card" style="display:none">
+SELECT * FROM Resume;
+
+<button onclick="runQuery('resume')">Run Query</button>
+
+<div id="results-resume" style="display:none">
+<iframe src="files/Samuel_Tanner_Resume_PP.pdf" width="100%" height="600px"></iframe>
+</div>
+
+  </div>
+</div>
+
+  <div id="relevant" class="card" style="display:none">
+SELECT CourseName, Year 
+FROM RelevantCoursework
+ORDER BY Year DESC;
+
+<button onclick="runQuery('relevant')">Run Query</button>
+
+<div id="results-relevant" style="display:none">
+<H3 class="label">Class:</H3> <span class="value">Advanced Database Management 2026</span>
+<H3 class="label">Class:</H3> <span class="value">Intro to Cloud Computing 2026</span>
+<H3 class="label">Class:</H3> <span class="value">Data Warehousing 2026</span>
+<H3 class="label">Class:</H3> <span class="value">Advanced Python Programming for Data Analytics 2025</span>
+<H3 class="label">Class:</H3> <span class="value">Cybersecurity Principles 2025</span>
+<H3 class="label">Class:</H3> <span class="value">Data Pipeline Engineering 2025</span>
+<H3 class="label">Class:</H3> <span class="value">Data Visualization with Tableau 2025</span>
+<H3 class="label">Class:</H3> <span class="value">Salesforce Administration Trailhead 2025</span>
+<H3 class="label">Class:</H3> <span class="value">Systems Strategy and Problem Solving (Business Capstone) 2025</span>
+<H3 class="label">Class:</H3> <span class="value">Introduction to Modern Data Analytics 2024</span>
+
+</div>
+
+  </div>
+
+<script>
+  function showTab(tabId) {
+    const tabs = document.querySelectorAll('.card');
+    const buttons = document.querySelectorAll('.tab');
+
+    tabs.forEach(tab => tab.style.display = 'none');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    document.getElementById(tabId).style.display = 'block';
+    event.target.classList.add('active');
+  }
+
+  // MATRIX BACKGROUND
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const columns = Math.floor(canvas.width / 20);
+  const drops = Array(columns).fill(1);
+
+  function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#043f02'; // darker green
+    ctx.font = '16px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = Math.random() > 0.5 ? '0' : '1';
+      ctx.fillText(text, i * 20, drops[i] * 20);
+
+      if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+
+  setInterval(draw, 50);
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  function runQuery(tabId) {
+    const results = document.getElementById('results-' + tabId);
+    results.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
