@@ -394,44 +394,45 @@ SELECT * FROM Resume;
 </div>
 
   <div id="relevant" class="card" style="display:none">
-SELECT CourseName, Year 
+SELECT CourseType, CourseName, Grade, Year
 FROM RelevantCoursework
-ORDER BY Year DESC;
+ORDER BY
+  CASE
+    WHEN CourseType = 'Data' THEN 1
+    WHEN CourseType = 'Business Acumen' THEN 2
+    ELSE 3
+  END,
+  Year DESC,
+  CourseName;
 
 <button onclick="runQuery('relevant')">Run Query</button>
 
 <div id="results-relevant" style="display:none">
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Advanced Database Management 2026</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Intro to Cloud Computing 2026</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Data Warehousing 2026</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Advanced Python Programming for Data Analytics 2025</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Cybersecurity Principles 2025</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Data Pipeline Engineering 2025</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Data Visualization with Tableau 2025</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Salesforce Administration Trailhead 2025</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Systems Strategy and Problem Solving (Business Capstone) 2025</span>
-</div>
-<div class="result-section">
-<H3 class="label">Class:</H3> <span class="value">Introduction to Modern Data Analytics 2024</span>
-</div>
-
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Advanced Database Management, A, 2026</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Intro to Cloud Computing, A, 2026</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Data Warehousing, A, 2026</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Advanced Python Programming for Data Analytics, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Data Pipeline Engineering, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Database Management, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Data Visualization with Tableau, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Introduction to Python Programming, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Introduction to Modern Data Analytics, A, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Data</span> <span class="value">Making Decisions With Data (Stats), A-, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Systems Strategy and Problem Solving (Business Capstone), A-, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Operations Management, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Investments, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Fundamentals of Marketing, A, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Corporate Finance, A, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Introduction to Microeconomics, A-, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Business Law, A-, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Leadership, A, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Financial Accounting, B+, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Managerial Accounting, B, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Business Acumen</span> <span class="value">Excel Business Analysis, A, 2023</span></div>
+  <div class="result-section"><span class="label">CourseType: Other</span> <span class="value">Cybersecurity Principles, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Other</span> <span class="value">Salesforce Administration Trailhead, A, 2025</span></div>
+  <div class="result-section"><span class="label">CourseType: Other</span> <span class="value">Calculus 1, B+, 2024</span></div>
+  <div class="result-section"><span class="label">CourseType: Other</span> <span class="value">Intro Computer Science 2, B-, 2023</span></div>
 </div>
 
   </div>
