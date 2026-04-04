@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: monospace;
+  overflow-x: hidden;
+  background: black;
+  color: #55e42a;
+  position: relative;
+}
+
+header {
+  padding: 20px;
+  font-size: 24px;
+  color: hsl(100, 100%, 50%);
+  position: relative;
+  z-index: 2;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.tab {
+  padding: 10px 15px;
+  border: 1px solid #475569;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.tab.active {
+  background: #67e8f9;
+  color: black;
+}
+
+.content {
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  border: 1px solid #373c42;
+  padding: 20px;
+  background: rgba(21, 22, 27, 0.9);
+  white-space: pre-wrap;
+  position: relative;
+  z-index: 2;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.label {
+  color: #55e42a;
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.label:first-of-type {
+  margin-top: 0;
+}
+
+.value {
+  color: white;
+  display: block;
+  margin-bottom: 8px;
+  padding-left: 12px;
+  border-left: 2px solid #55e42a;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.value a {
+  color: #55e42a;
+  text-decoration: underline;
+}
+
+.value a:hover {
+  color: white;
+}
+
+.result-section {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #373c42;
+}
+
+.result-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}

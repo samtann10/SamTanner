@@ -2,131 +2,10 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-22ELZMKVN7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-22ELZMKVN7');
- 
-  // --- Heartbeat to track time on page ---
-  // Sends a "heartbeat" event every 10 seconds
-  setInterval(() => {
-    gtag('event', 'heartbeat', {
-      'event_category': 'engagement',
-      'event_label': 'heartbeat',
-      'send_to': 'G-22ELZMKVN7'
-    });
-  }, 10000); // 10000ms = 10 seconds
-
-</script>
-<meta charset="UTF-8">
-<title>Sam Tanner Portfolio</title>
-<style>
-  body {
-    margin: 0;
-    font-family: monospace;
-    overflow-x: hidden;
-    background: black;
-    color: #55e42a;
-    position: relative;
-  }
-
-  header {
-    padding: 20px;
-    font-size: 24px;
-    color: hsl(100, 100%, 50%);
-    position: relative;
-    z-index: 2;
-  }
-
-  .tabs {
-    display: flex;
-    gap: 10px;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .tab {
-    padding: 10px 15px;
-    border: 1px solid #475569;
-    cursor: pointer;
-    z-index: 2;
-  }
-
-  .tab.active {
-    background: #67e8f9;
-    color: black;
-  }
-
-  .content {
-    padding: 20px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .card {
-    border: 1px solid #373c42;
-    padding: 20px;
-    background: rgba(21, 22, 27, 0.9);
-    white-space: pre-wrap;
-    position: relative;
-    z-index: 2;
-  }
-
-  canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  }
-
-  .label {
-    color: #55e42a;
-    display: block;
-    font-weight: bold;
-    margin-top: 12px;
-    margin-bottom: 6px;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-  }
-
-  .label:first-of-type {
-    margin-top: 0;
-  }
-
-  .value {
-    color: white;
-    display: block;
-    margin-bottom: 8px;
-    padding-left: 12px;
-    border-left: 2px solid #55e42a;
-    line-height: 1.6;
-    white-space: pre-wrap;
-  }
-
-  .value a {
-    color: #55e42a;
-    text-decoration: underline;
-  }
-
-  .value a:hover {
-    color: white;
-  }
-
-  .result-section {
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #373c42;
-  }
-
-  .result-section:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
-</style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-22ELZMKVN7"></script>
+  <meta charset="UTF-8">
+  <title>Sam Tanner Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -135,12 +14,12 @@
 <header>Sam_Tanner_Portfolio.db</header>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('about')">About</div>
-    <div class="tab" onclick="showTab('workexperience')">Work Experience</div>
-  <div class="tab" onclick="showTab('projects')">Projects</div>
-  <div class="tab" onclick="showTab('skills')">Skills</div>
-  <div class="tab" onclick="showTab('resume')">Resume</div>
-  <div class="tab" onclick="showTab('relevant')">Relevant Coursework</div>
+  <div class="tab active" onclick="showTab('about', this)">About</div>
+  <div class="tab" onclick="showTab('workexperience', this)">Work Experience</div>
+  <div class="tab" onclick="showTab('projects', this)">Projects</div>
+  <div class="tab" onclick="showTab('skills', this)">Skills</div>
+  <div class="tab" onclick="showTab('resume', this)">Resume</div>
+  <div class="tab" onclick="showTab('relevant', this)">Relevant Coursework</div>
 </div>
 
 <div class="content">
@@ -484,58 +363,7 @@ ORDER BY
 
   </div>
 
-<script>
-  function showTab(tabId) {
-    const tabs = document.querySelectorAll('.card');
-    const buttons = document.querySelectorAll('.tab');
-
-    tabs.forEach(tab => tab.style.display = 'none');
-    buttons.forEach(btn => btn.classList.remove('active'));
-
-    document.getElementById(tabId).style.display = 'block';
-    event.target.classList.add('active');
-  }
-
-  // MATRIX BACKGROUND
-  const canvas = document.getElementById('matrix');
-  const ctx = canvas.getContext('2d');
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const columns = Math.floor(canvas.width / 20);
-  const drops = Array(columns).fill(1);
-
-  function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#043f02'; // darker green
-    ctx.font = '16px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-      const text = Math.random() > 0.5 ? '0' : '1';
-      ctx.fillText(text, i * 20, drops[i] * 20);
-
-      if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-  }
-
-  setInterval(draw, 50);
-
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-
-  function runQuery(tabId) {
-    const results = document.getElementById('results-' + tabId);
-    results.style.display = 'block';
-  }
-</script>
+<script src="main.js"></script>
 
 </body>
 </html>
