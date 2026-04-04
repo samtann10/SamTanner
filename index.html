@@ -247,15 +247,19 @@ WHERE Name = 'Sam Tanner';
 </div>
   </div>
 
+<div id="projects" class="card" style="display:none">
 
-    <div id="projects" class="card" style="display:none">
 SELECT Project, Year, Description 
 FROM Projects
-WHERE Name = 'Sam Tanner';
+WHERE Name = 'Sam Tanner'
+ORDER BY Subject DESC;
 
 <button onclick="runQuery('projects')">Run Query</button>
 
 <div id="results-projects" style="display:none">
+
+<!-- ================= DATA ENGINEERING ================= -->
+<h2>Data Engineering</h2>
 
 <div class="result-section">
 <H3 class="label">Project:</H3> <span class="value">Sportsbook Data Engineering Project - Group Project, 2 members</span>
@@ -276,12 +280,21 @@ WHERE Name = 'Sam Tanner';
 </div>
 
 <div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">Cryptocurrency Arbitrage Trader</span>
-<H3 class="label">Year:</H3> <span class="value">2025</span>
-<H3 class="label">Description:</H3> <span class="value">• Developed a Python-based crypto arbitrage detection program using NetworkX graphs and live API data to identify optimal multi-currency exchange paths and detect dis-equilibrium cycles.
-• Automated data collection and storage of daily exchange-rate snapshots for 13 cryptocurrencies in CSV format, organizing datasets for analysis.
-• Implemented trading logic by linking arbitrage signals to a trading API (e.g., Alpaca) to execute real-time paper trades on profitable currency-exchange cycles.</span>
+<H3 class="label">Project:</H3> <span class="value">Animal Vaccination Data Wrangling and Pivot Reporting (SQL Server)</span>
+<H3 class="label">Year:</H3> <span class="value">2026</span>
+<H3 class="label">Description:</H3> <span class="value">• Cleansed and standardized animal records by updating adoption statuses, normalizing vaccine names, removing duplicates, and trimming inconsistent text fields.
+• Transformed vaccination data into a pivot-style report using SQL (via conditional aggregation) to display clear “Yes/No” vaccination statuses across multiple vaccine types.
+• Validated data integrity by leveraging database triggers and audit logs to confirm that all cleansing operations were isolated to temporary tables and did not impact the original dataset.</span>
 </div>
+
+<div class="result-section">
+<H3 class="label">Project:</H3> <span class="value">SQL Data Wrangling</span>
+<H3 class="label">Year:</H3> <span class="value">2024</span>
+<H3 class="label">Description:</H3> <span class="value">This project focused on comprehensive data cleansing using SQL to prepare two datasets for analysis. It involved (1) Loading and inspecting data, (2) Deleting columns, (3) Handling duplicates, (4) Data type conversion, (5) Handling missing, inconsistent, and Null values, and (6) Dealing with outliers.</span>
+</div>
+
+<!-- ================= DATA ANALYTICS AND DASHBOARDS ================= -->
+<h2>Data Analytics and Dashboards</h2>
 
 <div class="result-section">
 <H3 class="label">Project:</H3> <span class="value">Global Religious Landscape Dashboard</span>
@@ -294,20 +307,35 @@ WHERE Name = 'Sam Tanner';
 </div>
 
 <div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">Cloud-Native Image Ingestion Pipeline with AWS Services</span>
+<H3 class="label">Project:</H3> <span class="value">Food Consumer Price Index Analysis</span>
 <H3 class="label">Year:</H3> <span class="value">2026</span>
-<H3 class="label">Description:</H3> <span class="value">• Used Amazon EventBridge Scheduler to automatically trigger a Docker-based Lambda function every 5 minutes, enabling a fully automated, event-driven workflow without manual intervention.
-• Orchestrated the pipeline by having EventBridge reliably invoke Lambda to fetch NASA EPIC images and upload them to S3, ensuring consistent and scalable execution.
-• Leveraged EventBridge to decouple system components, allowing seamless integration between Lambda, S3, and SNS while maintaining a resilient and maintainable cloud architecture.</span>
-<span class="value"><a href="files/SNS_Sample.png" target="_blank">SNS Sample</a></span>
+<H3 class="label">Description:</H3> <span class="value">Collaborated in a team of 2 members to use Python, Pandas, and Power Query to clean, transform, and integrate raw Food Consumer Price Index (CPI) data from the Bureau of Labor Statistics (BLS) and USDA. Built a Tableau Story analyzing food price trends from 1974–2024, with forecasts through 2033, to inform general consumers about evolving food purchasing patterns. The project was presented to USU Huntsman School of Business faculty as part of the 2026 Hack-A-New-Year competition.</span>
+<span class="value"><a href="files/CPI Story Powerpoint Portfolio.pptx" target="_blank">Download PowerPoint</a></span>
 </div>
 
 <div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">Supply Chain Management Tool</span>
+<H3 class="label">Project:</H3> <span class="value">Supply Chain Management Data App</span>
 <H3 class="label">Year:</H3> <span class="value">2026</span>
 <H3 class="label">Description:</H3> <span class="value">• Built a production-grade supply chain analytics data app on Databricks Apps, Streamlit, and Unity Catalog, delivering live dashboards, governed data access, and natural language querying with enterprise data controls.
 • Developed as part of the Utah State University HackUSU competition, leveraging governance frameworks and scalable architecture from Databricks and presented the project to judges during competition review.
 • Collaborated as a small team using Kiro and Cursor AI for rapid spec-driven development, delivering a production-ready solution that was formally presented, evaluated, and judged in a competitive hackathon environment.</span>
+</div>
+
+<div class="result-section">
+<H3 class="label">Project:</H3> <span class="value">Group Project Data Analysis of the Nashville AirBnB Market</span>
+<H3 class="label">Year:</H3> <span class="value">2024</span>
+<H3 class="label">Description:</H3> <span class="value">In a 2 member group project, we were tasked with cleansing and analyzing a 2000-row dataset of Airbnb listings in the Nashville, Tennessee area. Our main objectives were to uncover and assess the investment potential of the area and to present our findings, delivering a data-driven investment recommendation.</span>
+</div>
+
+<!-- ================= CODING ================= -->
+<h2>Coding</h2>
+
+<div class="result-section">
+<H3 class="label">Project:</H3> <span class="value">Cryptocurrency Arbitrage Trader</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">• Developed a Python-based crypto arbitrage detection program using NetworkX graphs and live API data to identify optimal multi-currency exchange paths and detect dis-equilibrium cycles.
+• Automated data collection and storage of daily exchange-rate snapshots for 13 cryptocurrencies in CSV format, organizing datasets for analysis.
+• Implemented trading logic by linking arbitrage signals to a trading API (e.g., Alpaca) to execute real-time paper trades on profitable currency-exchange cycles.</span>
 </div>
 
 <div class="result-section">
@@ -319,12 +347,28 @@ WHERE Name = 'Sam Tanner';
 <span class="value"><a href="https://github.com/samtann10/Stock-Trader" target="_blank">View on GitHub</a></span>
 </div>
 
+<div class="result-section">
+<H3 class="label">Project:</H3> <span class="value">BlackJack Game Simulation</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">Designed and implemented a Python-based Blackjack game simulation, incorporating object-oriented programming principles to create classes for cards, decks, players, and game logic. The simulation included features such as shuffling, dealing, player actions (hit, stand, double down), and dealer behavior. The program was tested with various scenarios to ensure accurate game mechanics and outcomes.</span>
+</div>
 
 <div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">Food Consumer Price Index Analysis</span>
+<H3 class="label">Project:</H3> <span class="value">Mobile App Prototype UI Design</span>
+<H3 class="label">Year:</H3> <span class="value">2025</span>
+<H3 class="label">Description:</H3> <span class="value">Designed and developed an interactive mobile app prototype on Figma for a potential kitchen aid and supply tracker tech startup during a hackathon.</span>
+</div>
+
+<!-- ================= CLOUD COMPUTING ================= -->
+<h2>Cloud Computing</h2>
+
+<div class="result-section">
+<H3 class="label">Project:</H3> <span class="value">Cloud-Native Image Ingestion Pipeline with AWS Services</span>
 <H3 class="label">Year:</H3> <span class="value">2026</span>
-<H3 class="label">Description:</H3> <span class="value">Collaborated in a team of 2 members to use Python, Pandas, and Power Query to clean, transform, and integrate raw Food Consumer Price Index (CPI) data from the Bureau of Labor Statistics (BLS) and USDA. Built a Tableau Story analyzing food price trends from 1974–2024, with forecasts through 2033, to inform general consumers about evolving food purchasing patterns. The project was presented to USU Huntsman School of Business faculty as part of the 2026 Hack-A-New-Year competition.</span>
-<span class="value"><a href="files/CPI Story Powerpoint Portfolio.pptx" target="_blank">Download PowerPoint</a></span>
+<H3 class="label">Description:</H3> <span class="value">• Used Amazon EventBridge Scheduler to automatically trigger a Docker-based Lambda function every 5 minutes, enabling a fully automated, event-driven workflow without manual intervention.
+• Orchestrated the pipeline by having EventBridge reliably invoke Lambda to fetch NASA EPIC images and upload them to S3, ensuring consistent and scalable execution.
+• Leveraged EventBridge to decouple system components, allowing seamless integration between Lambda, S3, and SNS while maintaining a resilient and maintainable cloud architecture.</span>
+<span class="value"><a href="files/SNS_Sample.png" target="_blank">SNS Sample</a></span>
 </div>
 
 <div class="result-section">
@@ -335,19 +379,8 @@ WHERE Name = 'Sam Tanner';
 • Automated infrastructure provisioning and scaling by integrating an Auto Scaling Group with the launch template, allowing dynamic instance scaling based on demand while maintaining consistent application performance.</span>
 </div>
 
-<div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">Animal Vaccination Data Wrangling and Pivot Reporting (SQL Server)</span>
-<H3 class="label">Year:</H3> <span class="value">2026</span>
-<H3 class="label">Description:</H3> <span class="value">• Cleansed and standardized animal records by updating adoption statuses, normalizing vaccine names, removing duplicates, and trimming inconsistent text fields.
-• Transformed vaccination data into a pivot-style report using SQL (via conditional aggregation) to display clear “Yes/No” vaccination statuses across multiple vaccine types.
-• Validated data integrity by leveraging database triggers and audit logs to confirm that all cleansing operations were isolated to temporary tables and did not impact the original dataset.</span>
-</div>
-
-<div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">BlackJack Game Simulation</span>
-<H3 class="label">Year:</H3> <span class="value">2025</span>
-<H3 class="label">Description:</H3> <span class="value">Designed and implemented a Python-based Blackjack game simulation, incorporating object-oriented programming principles to create classes for cards, decks, players, and game logic. The simulation included features such as shuffling, dealing, player actions (hit, stand, double down), and dealer behavior. The program was tested with various scenarios to ensure accurate game mechanics and outcomes.</span>
-</div>
+<!-- ================= CYBERSECURITY ================= -->
+<h2>Cybersecurity</h2>
 
 <div class="result-section">
 <H3 class="label">Project:</H3> <span class="value">Cybersecurity Reference Tool</span>
@@ -358,26 +391,8 @@ WHERE Name = 'Sam Tanner';
 • Designed engaging user experience with quizzes and dynamic content, reinforcing learning through interactive assessments and real-time feedback across all cybersecurity topics.</span>
 </div>
 
-<div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">Group Project Data Analysis of the Nashville AirBnB Market</span>
-<H3 class="label">Year:</H3> <span class="value">2024</span>
-<H3 class="label">Description:</H3> <span class="value">In a 2 member group project, we were tasked with cleansing and analyzing a 2000-row dataset of Airbnb listings in the Nashville, Tennessee area. Our main objectives were to uncover and assess the investment potential of the area and to present our findings, delivering a data-driven investment recommendation.</span>
-</div>
-
-<div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">SQL Data Wrangling</span>
-<H3 class="label">Year:</H3> <span class="value">2024</span>
-<H3 class="label">Description:</H3> <span class="value">This project focused on comprehensive data cleansing using SQL to prepare two datasets for analysis. It involved (1) Loading and inspecting data, (2) Deleting columns, (3) Handling duplicates, (4) Data type conversion, (5) Handling missing, inconsistent, and Null values, and (6) Dealing with outliers.</span>
-</div>
-
-<div class="result-section">
-<H3 class="label">Project:</H3> <span class="value">Mobile App Prototype UI Design</span>
-<H3 class="label">Year:</H3> <span class="value">2025</span>
-<H3 class="label">Description:</H3> <span class="value">Designed and developed an interactive mobile app prototype on Figma for a potential kitchen aid and supply tracker tech startup during a hackathon.</span>
 </div>
 </div>
-
-  </div>
 
   <div id="skills" class="card" style="display:none">
 SELECT * 
