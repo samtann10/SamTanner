@@ -156,9 +156,10 @@ ORDER BY Subject DESC;
 <H3 class="label">Description:</H3> <span class="value">• Designed a dimensional model (star schema) integrating sales and marketing email data from Amazon RDS and S3, enabling analysis of sales trends and marketing campaign effectiveness, with conformed dimensions for consistency across processes.
 • Extracted and loaded raw transactional data into Snowflake using Fivetran, then transformed it into dimensional models with dbt, including surrogate keys to relate fact and dimension tables.
 • Applied dbt tests (unique, not_null, accepted_values, relationships) to ensure data integrity, scheduled daily data syncs via Fivetran, and automated dbt jobs for continuous updates.
+• Implemented Change Data Capture (CDC) using Snowflake Streams and Tasks to process incremental data changes and automate transformations, improving pipeline efficiency and data freshness.
 • Built interactive Power BI dashboards to visualize sales performance and marketing email conversions, providing actionable insights for Eco Essentials leadership.
 • Presented a fully functional, scalable, and maintainable data warehouse ecosystem, demonstrating capabilities from data ingestion to business intelligence reporting.</span>
-<span class="value"><a href="files/Star_Schema.png" target="_blank">Download Dimensional Model</a></span>
+<span class="value"><a href="files/EcoEssentials_Model_PP.png" target="_blank">Download Dimensional Model</a></span>
 </div>
 
 <div class="result-section">
@@ -314,8 +315,8 @@ SELECT * FROM Resume;
 <button onclick="runQuery('resume')">Run Query</button>
 
 <div id="results-resume" style="display:none">
-<span class="value"><a href="files/Samuel_Tanner_Resume_PP.pdf" target="_blank">Download Resume</a></span>
-<iframe src="files/Samuel_Tanner_Resume_PP.pdf" width="100%" height="600px"></iframe>
+<span class="value"><a href="files/SamTanner_Resume_PP.pdf" target="_blank">Download Resume</a></span>
+<iframe src="files/SamTanner_Resume_PP.pdf" width="100%" height="600px"></iframe>
 </div>
 
   </div>
