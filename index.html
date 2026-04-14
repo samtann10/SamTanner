@@ -128,7 +128,7 @@ WHERE Name = 'Sam Tanner';
 
 <div id="projects" class="card" style="display:none">
 
-SELECT Project, Year, Description 
+SELECT Category, Project, Year, Description 
 FROM Projects
 WHERE Name = 'Sam Tanner'
 ORDER BY Subject DESC;
@@ -287,7 +287,7 @@ ORDER BY Subject DESC;
 </div>
 
   <div id="skills" class="card" style="display:none">
-SELECT * 
+SELECT DISTINCT Category, SkillName
 FROM Skills
 WHERE Name = 'Sam Tanner';
 
@@ -299,7 +299,7 @@ WHERE Name = 'Sam Tanner';
 </div>
 
 <div class="result-section">
-<H3 class="label">Cloud & Tools:</H3> <span class="value">AWS (Lambda, SNS, EventBridge, Load Balancing, Auto-Scaling, Basic IAM Administration), Linux (foundational), GitHub, Jupyter Notebooks, Snowflake, dbt, FiveTran, Docker, kiro, Cursor, Databricks, Power Automate, Azure SQL Database</span>
+<H3 class="label">Cloud & Tools:</H3> <span class="value">AWS (Lambda, SNS, EventBridge, Load Balancing, Auto-Scaling, Basic IAM Administration), Linux (foundational), GitHub, Jupyter Notebooks, Snowflake, dbt, FiveTran, Docker, kiro, Cursor, Databricks, Power Automate, Azure SQL Database, Claude Code</span>
 </div>
 
 <div class="result-section">
