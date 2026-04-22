@@ -19,6 +19,7 @@
   <div class="tab" onclick="showTab('projects', this)">Projects</div>
   <div class="tab" onclick="showTab('skills', this)">Skills</div>
   <div class="tab" onclick="showTab('resume', this)">Resume</div>
+  <div class="tab" onclick="showTab('certifications', this)">Certifications</div>
   <div class="tab" onclick="showTab('relevant', this)">Relevant Coursework</div>
 </div>
 
@@ -87,8 +88,9 @@ I thrive in environments that foster curiosity, collaboration, and problem-solvi
 
     <div id="workexperience" class="card" style="display:none">
 SELECT Company, Location, Position, Duration, Responsibilities
-FROM [Work Experience]
-WHERE Name = 'Sam Tanner';
+FROM [Work Experience] w 
+  JOIN About a ON w.Name = a.Name
+WHERE a.Name = 'Sam Tanner';
 
 <button onclick="runQuery('workexperience')">Run Query</button>
 
@@ -129,7 +131,8 @@ WHERE Name = 'Sam Tanner';
 <div id="projects" class="card" style="display:none">
 
 SELECT Category, Project, Year, Description 
-FROM Projects
+FROM Projects p 
+  JOIN About a ON p.Name = a.Name
 WHERE Name = 'Sam Tanner'
 ORDER BY Subject DESC;
 
@@ -288,8 +291,8 @@ ORDER BY Subject DESC;
 
   <div id="skills" class="card" style="display:none">
 SELECT DISTINCT Category, SkillName
-FROM Skills
-WHERE Name = 'Sam Tanner';
+FROM Skills s JOIN About a ON s.Name = a.Name
+WHERE a.Name = 'Sam Tanner';
 
 <button onclick="runQuery('skills')">Run Query</button>
 
@@ -331,9 +334,35 @@ SELECT * FROM Resume;
   </div>
 </div>
 
+  <div id="certifications" class="card" style="display:none">
+SELECT DISTINCT 
+  CertificationName, 
+  Score, 
+  IssueDate,
+  IssuingOrganization,
+  CASE CertificationName 
+    WHEN 'SnowPro Associate: Platform Certification' THEN '<a href="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/180485527">Snowflake URL</a>'
+    WHEN 'Tableau Desktop Specialist' THEN '<a href="https://www.salesforce.com/trailblazer/profile/samtanner">Tableau URL</a>'
+    ELSE NULL
+  END AS CredentialURL
+FROM Certifications c 
+  JOIN About a ON c.Name = a.Name
+WHERE a.Name = 'Sam Tanner'
+ORDER BY IssueDate DESC;
+
+<button onclick="runQuery('certifications')">Run Query</button>
+
+<div id="results-certifications" style="display:none">
+  <div class="result-section"><span class="label">Certification:</span> <span class="value">SnowPro Associate: Platform Certification, 92.5%, 4/22/2026, Snowflake, https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/180485527 </span></div>
+    <div class="result-section"><span class="label">Certification:</span> <span class="value">Tableau Desktop Specialist, PASS, 12/12/2025, Salesforce, https://www.salesforce.com/trailblazer/profile/samtanner </span></div>
+</div>
+  </div>
+
   <div id="relevant" class="card" style="display:none">
 SELECT CourseType, CourseName, Grade, Year
-FROM RelevantCoursework
+FROM RelevantCoursework r 
+  JOIN About a ON r.Name = a.Name
+WHERE a.Name = 'Sam Tanner'
 ORDER BY
   CASE
     WHEN CourseType = 'Data' THEN 1
