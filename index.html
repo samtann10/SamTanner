@@ -343,8 +343,8 @@ SELECT DISTINCT
   IssueDate,
   IssuingOrganization,
   CASE CertificationName 
-    WHEN 'SnowPro Associate: Platform Certification' THEN '<a href="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/180485527">Snowflake URL</a>'
-    WHEN 'Tableau Desktop Specialist' THEN '<a href="https://www.salesforce.com/trailblazer/profile/samtanner">Tableau URL</a>'
+    WHEN 'SnowPro Associate: Platform Certification' THEN 'Snowflake URL'
+    WHEN 'Tableau Desktop Specialist' THEN 'Tableau URL'
     ELSE NULL
   END AS CredentialURL
 FROM Certifications c 
@@ -355,8 +355,8 @@ ORDER BY IssueDate DESC;
 <button onclick="runQuery('certifications')">Run Query</button>
 
 <div id="results-certifications" style="display:none">
-  <div class="result-section"><span class="label">Certification:</span> <span class="value">SnowPro Associate: Platform Certification, 92.5%, 4/22/2026, Snowflake, https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/180485527 </span></div>
-    <div class="result-section"><span class="label">Certification:</span> <span class="value">Tableau Desktop Specialist, PASS, 12/12/2025, Salesforce, https://www.salesforce.com/trailblazer/profile/samtanner </span></div>
+  <div class="result-section"><span class="label">Certification:</span> <span class="value">SnowPro Associate: Platform Certification, 92.5%, 4/22/2026, Snowflake, <a href="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/180485527">Snowflake URL</a> </span></div>
+    <div class="result-section"><span class="label">Certification:</span> <span class="value">Tableau Desktop Specialist, PASS, 12/12/2025, Salesforce, <a href="https://www.salesforce.com/trailblazer/profile/samtanner">Tableau URL</a> </span></div>
 </div>
   </div>
 
